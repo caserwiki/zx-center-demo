@@ -1,0 +1,31 @@
+{
+  "name": "zx-center/operation-log",
+  "description": "Zx Center 操作日志扩展",
+  "type": "library",
+  "keywords": ["zx-center", "extension"],
+  "homepage": "https://github.com/caserwiki/operation-log",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "zx",
+      "email": "281458722@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.0",
+    "zhanxin/laravel-admin": "~2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Zx\\Admin\\OperationLog\\": "src/"
+    }
+  },
+  "extra": {
+    "zx-center": "Zx\\Admin\\OperationLog\\OperationLogServiceProvider",
+    "laravel": {
+      "providers": [
+        "Zx\\Admin\\OperationLog\\OperationLogServiceProvider"
+      ]
+    }
+  }
+}

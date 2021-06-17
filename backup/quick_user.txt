@@ -1,0 +1,33 @@
+cd www
+
+composer create-project --prefer-dist laravel/laravel 项目名称
+
+cd 项目名称
+
+composer require zhanxin/laravel-admin:"2.*" -vvv
+
+composer update
+
+php artisan admin:publish
+
+php artisan admin:ide-helper
+
+composer require zhanxin/easy-excel
+
+文件覆盖丢进去
+
+php artisan admin:install
+
+改.ENV
+
+伪静态
+location / {
+    try_files $uri $uri/ /index.php?$query_string;
+}
+
+去扩展安装operation-log-master
+
+sql
+
+
+

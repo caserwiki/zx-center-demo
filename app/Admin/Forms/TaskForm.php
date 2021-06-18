@@ -68,6 +68,6 @@ class TaskForm extends Form implements LazyRenderable
     public function form()
     {
         $this->select('status')->options(Task::$status)->placeholder('未完成')->help('已完成或关闭视为本工作任务结束, 后续不可跟进');
-        $this->editor('description')->required();
+        $this->editor('description')->required()->help('不要传超级大图');
     }
 }

@@ -310,7 +310,7 @@ CREATE TABLE `admin_users` (
 
 INSERT INTO `admin_users` (`id`, `username`, `password`, `name`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'admin', '$2y$10$1rxKv3ktAAhMwZTO5GPBm.cZsdQucK7hEyv2HcP.yf.rpGCfgsDPC', 'Administrator', 'images/logo.jpg', NULL, '2021-05-27 20:05:36', '2021-05-28 04:45:38'),
-(2, 'zanxin', '$2y$10$ppyFMzlsYP.w.RgO5J1GZujeRIJTJ2NsKjGoL.Tm0Wzxl6P.r.xRe', '昝薪', NULL, NULL, '2021-05-28 06:31:17', '2021-05-28 06:31:17');
+(2, 'zanxin', '$2y$10$ppyFMzlsYP.w.RgO5J1GZujeRIJTJ2NsKjGoL.Tm0Wzxl6P.r.xRe', 'ZanXin', NULL, NULL, '2021-05-28 06:31:17', '2021-05-28 06:31:17');
 
 -- --------------------------------------------------------
 

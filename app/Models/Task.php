@@ -2,10 +2,28 @@
 
 namespace App\Models;
 
+use DateTime;
 use Zx\Admin\Traits\HasDateTimeFormatter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static where(string $key, string $value, string $value = null)
+ * @method static whereBetween(string $string, array $array)
+ *
+ * @property int id
+ * @property int parent_id
+ * @property string name 名称
+ * @property int|null p1 发布人
+ * @property int|null p2 执行人
+ * @property string|null product 产品
+ * @property string description 任务说明
+ * @property int|null status 状态
+ * @property DateTime|null finish_at
+ * @property DateTime|null created_at
+ * @property DateTime|null updated_at
+ * @property DateTime|null deleted_at
+ */
 class Task extends Model
 {
 	use HasDateTimeFormatter;

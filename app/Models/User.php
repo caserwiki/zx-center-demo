@@ -6,6 +6,16 @@ use Zx\Admin\Traits\HasDateTimeFormatter;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static where(string $key, string $value1, string $value2 = null)
+ * @method static pluck(string $text, string $id)
+ *
+ * @property int id
+ * @property string name
+ * @property string username
+ * @property string|null depreciation_rule_id
+ * @property string|null parent_id
+ */
 class User extends Model
 {
     use HasDateTimeFormatter;

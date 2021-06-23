@@ -62,9 +62,9 @@
                     <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 184px;"></div>
                 </div>
             </li>
-            <li class="dropdown-menu-footer">
+            {{--<li class="dropdown-menu-footer">
                 <a class="dropdown-item p-1 text-center" href="javascript:void(0)">Read all notifications</a>
-            </li>
+            </li>--}}
         </ul>
     </li>
 </ul>

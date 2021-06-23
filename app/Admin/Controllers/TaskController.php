@@ -6,6 +6,7 @@ use App\Admin\Renderable\TaskTable;
 use App\Admin\Repositories\Task;
 use App\Models\Product;
 use App\Models\User;
+use App\Support\Support;
 use Zx\Admin\Admin;
 use Zx\Admin\Form;
 use Zx\Admin\Grid;
@@ -44,6 +45,7 @@ class TaskController extends AdminController
             $grid->column('updated_at')->sortable();
 
             $grid->selector(function (Grid\Tools\Selector $selector) use ($TaskModel) {
+                $selector->select('p2', json_decode(User::pluck('name', 'id'), true));
                 $selector->select('status', $TaskModel::$status);
             });
             $grid->quickSearch(['name', 'id']);
@@ -54,11 +56,11 @@ class TaskController extends AdminController
             // $grid->setActionClass(Grid\Displayers\Actions::class); // 行操作按钮显示方式
             $grid->disableDeleteButton();
             $grid->disableEditButton();
-            // $grid->showQuickEditButton();
             $grid->disableViewButton();
+            // $grid->showQuickEditButton();
             // $grid->disableActions(); // 行操作按钮
 
-            if (Admin::user()->can('todo.record.export')) {
+            if (Admin::user()->can('task.task.export')) {
                 $grid->export();
             }
 
@@ -68,6 +70,15 @@ class TaskController extends AdminController
                     $actions->append(new \App\Admin\Actions\TaskAction());
                 }
             });
+            /**
+             * 工具按钮.
+             */
+            // $grid->tools(function (Tools $tools) {
+            //     // @permissions
+            //     if (Admin::user()->can('task.task.create')) {
+            //         $tools->append(new \App\Admin\Actions\TaskCreateAction());
+            //     }
+            // });
         });
     }
 
@@ -113,12 +124,8 @@ class TaskController extends AdminController
             $form->select('product')->options(function () {
                 return Product::all()->pluck('name', 'id');
             })->required();
-            $form->select('p1')->options(function () {
-                return User::all()->pluck('name', 'id');
-            })->required();
-            $form->select('p2')->options(function () {
-                return User::all()->pluck('name', 'id');
-            })->required();
+            $form->select('p1')->options(User::pluck('name', 'id'))->required();
+            $form->select('p2')->options(User::pluck('name', 'id'))->required();
             $form->editor('description')->required()->help('不要传超级大图');
             $form->datetime('finish_at')->required();
             $form->display('created_at');

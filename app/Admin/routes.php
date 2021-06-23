@@ -18,6 +18,9 @@ Route::group([
     $router->resource('campaign', 'AdCampaignController');
     $router->resource('product', 'ProductController');
     $router->resource('task', 'TaskController')->names('task.records');
-    $router->get('task/append', 'TaskController@append')->name('task.append');
+    // $router->get('task/append', 'TaskController@append')->name('task.append');
     // $router->get('task/append', [\App\Admin\Controllers\TaskController::Class, 'append'])->name('task.append');
+
+    $router->get('/user/selectList', [\App\Admin\Controllers\UserController::class, 'selectList'])
+        ->name('user.selectList');
 });

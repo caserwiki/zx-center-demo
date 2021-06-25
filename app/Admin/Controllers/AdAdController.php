@@ -42,10 +42,12 @@ class AdAdController extends AdminController
             $grid->quickSearch(['name']);
 
             $grid->filter(function (Grid\Filter $filter) use ($AdModel) {
+                // 展开过滤器
+                $filter->expand();
                 // 更改为 panel 布局
                 $filter->panel();
 
-                $filter->equal('id')->width(3);
+                $filter->like('name')->width(3);
                 $filter->in('union_video_type')->multipleSelect($AdModel::$union_video_type);
             });
 

@@ -43,9 +43,19 @@ class TaskController extends AdminController
             $grid->column('created_at')->sortable();
             $grid->column('updated_at')->sortable();
 
-            $grid->selector(function (Grid\Tools\Selector $selector) use ($TaskModel) {
-                $selector->select('p2', json_decode(User::pluck('name', 'id'), true));
-                $selector->select('status', $TaskModel::$status);
+            // $grid->selector(function (Grid\Tools\Selector $selector) use ($TaskModel) {
+            //     $selector->select('p2', json_decode(User::pluck('name', 'id'), true));
+            //     $selector->select('status', $TaskModel::$status);
+            // });
+            $grid->filter(function (Grid\Filter $filter) use ($TaskModel) {
+                // 展开过滤器
+                $filter->expand();
+                // 更改为 panel 布局
+                $filter->panel();
+
+                $filter->equal('status')->select($TaskModel::$status);
+                $filter->in('p2')->multipleSelect(json_decode(User::pluck('name', 'id'), true));
+                $filter->between('created_at')->datetime();
             });
             $grid->quickSearch(['name', 'id']);
             // $grid->enableDialogCreate(); // 弹窗创建表单

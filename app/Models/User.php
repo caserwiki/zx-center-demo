@@ -37,7 +37,15 @@ class User extends Model
         parent::__construct($attributes);
     }
 
-
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     public function task_p1()
     {

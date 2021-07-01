@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Renderable\TaskTable;
+use App\Admin\Renderable\UserTable;
 use App\Admin\Repositories\Task;
 use App\Models\Product;
 use App\Models\User;
@@ -22,14 +23,14 @@ class TaskController extends AdminController
     protected function grid()
     {
         $TaskModel = config('models.task_model');
-        return Grid::make(Task::with(['belong_product', 'belong_p1', 'belong_p2']), function (Grid $grid) use ($TaskModel) {
+        return Grid::make(Task::with(['belong_product', 'belong_p1'/*, 'belong_p2'*/]), function (Grid $grid) use ($TaskModel) {
             $grid->model()->where('parent_id', '=', 0);
             $grid->model()->orderBy('created_at', 'desc');
             $grid->id('ID')->sortable();
             $grid->column('name')->limit(50);
             $grid->column('belong_product.name', admin_trans_field('product'))->label();
             $grid->column('belong_p1.name', admin_trans_field('p1'))->label();
-            $grid->column('belong_p2.name', admin_trans_field('p2'))->label();
+            $grid->column('p2')->label('primary', 3);
             $grid->column('description')->display(function () {
                 return <<<EOT
                     $this->description
@@ -134,7 +135,16 @@ class TaskController extends AdminController
                 return Product::all()->pluck('name', 'id');
             })->required();
             $form->select('p1')->options(User::pluck('name', 'id'))->required();
-            $form->select('p2')->options(User::pluck('name', 'id'))->required();
+            $form->multipleSelectTable('p2')
+                ->title('p2')
+                ->max(4)
+                ->from(UserTable::make(['id' => $form->getKey()]))
+                ->model(User::class, 'id', 'name')
+                ->saving(function ($value) {
+                    // 转化为json格式存储
+                    // return json_encode($value);
+                    return implode(',', $value);
+                })->required();
             $form->editor('description')->required()->help('不要传超级大图');
             $form->datetime('finish_at')->required();
             $form->display('created_at');

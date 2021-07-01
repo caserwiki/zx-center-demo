@@ -61,4 +61,14 @@ class Task extends Model
     {
         return $this->belongsTo(User::class, 'p2', 'id');
     }
+
+    public function getP2Attribute($value)
+    {
+        $data = [];
+        $user = User::pluck('name', 'id');
+        foreach (explode(',', $value) as $v) {
+            if (!empty($user[$v])) $data[] = $user[$v];
+        }
+        return implode(',', $data);
+    }
 }

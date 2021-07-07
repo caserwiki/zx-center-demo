@@ -18,5 +18,7 @@ return [
         'advert'        => '广告',
         'campaign'      => '广告组',
         'ad'            => '广告计划',
+        'other'         => '其它',
+        'files'         => '文件',
     ],
 ];

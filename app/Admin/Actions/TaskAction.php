@@ -11,7 +11,8 @@ class TaskAction extends RowAction
     public function __construct()
     {
         parent::__construct();
-        $this->title = '<a href="#" style="cursor: pointer;"><i class="fa fa-fw feather icon-edit-1"></i>' . admin_trans_label('apend') . '</a>';
+        // $this->title = '<a href="#" style="cursor: pointer;"><i class="fa fa-fw feather icon-edit-1"></i>' . admin_trans_label('apend') . '</a>';
+        $this->title = '<a href="#" style="cursor: pointer;"><i class="fa fa-fw feather icon-edit-1"></i></a>';
     }
 
     /**

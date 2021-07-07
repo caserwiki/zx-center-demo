@@ -6,7 +6,10 @@ use App\Admin\Renderable\TaskTable;
 use App\Admin\Renderable\UserTable;
 use App\Admin\Repositories\Task;
 use App\Models\Product;
+use App\Models\Task AS TaskModel;
 use App\Models\User;
+use App\Models\Files;
+use Zx\Admin\Layout\Content;
 use Zx\Admin\Admin;
 use Zx\Admin\Form;
 use Zx\Admin\Grid;
@@ -66,7 +69,7 @@ class TaskController extends AdminController
             // $grid->setActionClass(Grid\Displayers\Actions::class); // 行操作按钮显示方式
             $grid->disableDeleteButton();
             $grid->disableEditButton();
-            $grid->disableViewButton();
+            // $grid->disableViewButton();
             // $grid->showQuickEditButton();
             // $grid->disableActions(); // 行操作按钮
 
@@ -126,6 +129,7 @@ class TaskController extends AdminController
     {
         return Form::make(Task::with(['belong_product', 'belong_p1', 'belong_p2']), function (Form $form) {
             $form->display('id');
+            $form->display('parent_id');
             // $form->select('parent_id', trans('admin.parent_id'))
             //     ->options(function () {
             //         return TaskModel::all()->where('parent_id', '=', 0)->pluck('name', 'id');
@@ -150,5 +154,29 @@ class TaskController extends AdminController
             $form->display('created_at');
             $form->display('updated_at');
         });
+    }
+
+    /**
+     * Make a show builder.
+     *
+     * @param mixed $id
+     *
+     * @return Content
+     */
+    public function show($id, Content $content)
+    {
+        Admin::css(['/static/css/task_show.css',]);
+        $task = TaskModel::find($id)->toArray();
+        $task['description'] = trim($task['description'], '"');
+        $data = [
+            'data' => $task,
+            'events' => TaskModel::query()->where('parent_id', '=', $id)->get(),
+            'users' => User::all()->keyBy('id')->toArray(),
+            'files' => Files::query()->where('task_id', '=', $id)->get(),
+        ];
+        return $content
+            ->title(admin_trans_label('task'))
+            ->description('ID:' . $id)
+            ->body(view('admin/task/show', $data));
     }
 }

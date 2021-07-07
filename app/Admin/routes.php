@@ -17,7 +17,9 @@ Route::group([
     $router->resource('ad', 'AdAdController');
     $router->resource('campaign', 'AdCampaignController');
     $router->resource('product', 'ProductController');
-    $router->resource('task', 'TaskController')->names('task.records');
+    $router->resource('task', 'TaskController');
+    $router->post('task/store', 'TaskController@store');
+    $router->resource('files', 'FilesController');
     // $router->get('task/append', 'TaskController@append')->name('task.append');
     // $router->get('task/append', [\App\Admin\Controllers\TaskController::Class, 'append'])->name('task.append');
 

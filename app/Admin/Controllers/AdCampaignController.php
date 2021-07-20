@@ -75,7 +75,7 @@ class AdCampaignController extends AdminController
     protected function detail($id)
     {
         $AdCampaignModel = config('models.campaign_model');
-        return Show::make($id, $AdCampaignModel, function (Show $show) use ($AdCampaignModel) {
+        return Show::make($id, new AdCampaign, function (Show $show) use ($AdCampaignModel) {
             $show->field('id');
             $show->field('name');
             $show->field('status')->using(['关闭', '启用']);

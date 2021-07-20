@@ -2,14 +2,17 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\Import\TaskImportAction;
+use App\Admin\Actions\TaskAction;
 use App\Admin\Renderable\TaskTable;
 use App\Admin\Renderable\UserTable;
 use App\Admin\Repositories\Task;
 use App\Models\Product;
-use App\Models\Task AS TaskModel;
+use App\Models\Task as TaskModel;
 use App\Models\User;
 use App\Models\Files;
 use Zx\Admin\Layout\Content;
+use Zx\Admin\Grid\Tools;
 use Zx\Admin\Admin;
 use Zx\Admin\Form;
 use Zx\Admin\Grid;
@@ -18,6 +21,31 @@ use Zx\Admin\Http\Controllers\AdminController;
 
 class TaskController extends AdminController
 {
+    /**
+     * Make a show builder.
+     *
+     * @param mixed $id
+     *
+     * @return Content
+     */
+    public function show($id, Content $content)
+    {
+        Admin::css(['/static/css/task_show.css',]);
+        $task = TaskModel::query()->find($id);
+        $task = $task->toArray();
+        $task['description'] = trim($task['description'], '"');
+        $data = [
+            'data' => $task,
+            'events' => TaskModel::query()->where('parent_id', '=', $id)->get(),
+            'users' => User::all()->keyBy('id')->toArray(),
+            'files' => Files::query()->where('task_id', '=', $id)->get(),
+        ];
+        return $content
+            ->title(admin_trans_label('task'))
+            ->description('ID:' . $id)
+            ->body(view('admin/task/show', $data));
+    }
+
     /**
      * Make a grid builder.
      *
@@ -32,7 +60,9 @@ class TaskController extends AdminController
             $grid->id('ID')->sortable();
             $grid->column('name')->limit(50);
             $grid->column('belong_product.name', admin_trans_field('product'))->label();
-            $grid->column('belong_p1.name', admin_trans_field('p1'))->label();
+            $grid->column('belong_p1.name', admin_trans_field('p1'))->link(function ($value) {
+                return admin_url('auth/roles/' . $this->p1);
+            });
             $grid->column('p2')->label('primary', 3);
             $grid->column('description')->display(function () {
                 return <<<EOT
@@ -73,25 +103,51 @@ class TaskController extends AdminController
             // $grid->showQuickEditButton();
             // $grid->disableActions(); // 行操作按钮
 
+            /**
+             * 导出
+             */
+            $titles = [
+                'name' => admin_trans_field('name'),
+                'belong_product.name' => admin_trans_field('product'),
+                'belong_p1.name' => admin_trans_field('p1'),
+                'p2' => admin_trans_field('p2'),
+                'description' => admin_trans_field('description'),
+                'status' => admin_trans_field('status'),
+                'finish_at' => admin_trans_field('finish_at'),
+                'created_at' => admin_trans_field('created_at'),
+                'updated_at' => admin_trans_field('updated_at'),
+            ];
+            $grid->export($titles)->rows(function (array $rows) use ($TaskModel) {
+                $status = $TaskModel::$status;
+                foreach ($rows as $index => &$row) {
+                    $row['status'] = $status[$row['status']];
+                }
+
+                return $rows;
+            })->xlsx();
+
             if (Admin::user()->can('task.task.export')) {
                 $grid->export();
             }
 
-            // $grid->actions(new \App\Admin\Actions\TaskAction());
+            /**
+             * 新建
+             */
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 if ($actions->row->status == 0) {
-                    $actions->append(new \App\Admin\Actions\TaskAction());
+                    $actions->append(new TaskAction());
                 }
             });
+
             /**
-             * 工具按钮.
+             * 导入按钮.
              */
-            // $grid->tools(function (Tools $tools) {
-            //     // @permissions
-            //     if (Admin::user()->can('task.task.create')) {
-            //         $tools->append(new \App\Admin\Actions\TaskCreateAction());
-            //     }
-            // });
+            $grid->tools(function (Tools $tools) {
+                // @permissions
+                if (Admin::user()->can('task.task.export')) {
+                    $tools->append(new TaskImportAction());
+                }
+            });
         });
     }
 
@@ -154,29 +210,5 @@ class TaskController extends AdminController
             $form->display('created_at');
             $form->display('updated_at');
         });
-    }
-
-    /**
-     * Make a show builder.
-     *
-     * @param mixed $id
-     *
-     * @return Content
-     */
-    public function show($id, Content $content)
-    {
-        Admin::css(['/static/css/task_show.css',]);
-        $task = TaskModel::find($id)->toArray();
-        $task['description'] = trim($task['description'], '"');
-        $data = [
-            'data' => $task,
-            'events' => TaskModel::query()->where('parent_id', '=', $id)->get(),
-            'users' => User::all()->keyBy('id')->toArray(),
-            'files' => Files::query()->where('task_id', '=', $id)->get(),
-        ];
-        return $content
-            ->title(admin_trans_label('task'))
-            ->description('ID:' . $id)
-            ->body(view('admin/task/show', $data));
     }
 }

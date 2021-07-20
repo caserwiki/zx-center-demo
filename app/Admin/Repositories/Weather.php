@@ -2,7 +2,6 @@
 
 namespace App\Admin\Repositories;
 
-use Facade\FlareClient\Context\RequestContext;
 use Zx\Admin\Repositories\EloquentRepository;
 
 class Weather extends EloquentRepository

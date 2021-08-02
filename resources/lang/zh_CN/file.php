@@ -11,5 +11,8 @@ return [
         'type' => '类型',
     ],
     'options' => [
+        'file_none' => '文件不存在:',
+        'file_io_error' => '文件读写失败:',
+        'file_format' => '无效的文件类型:',
     ],
 ];

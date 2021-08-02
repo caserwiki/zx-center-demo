@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\Grid\SwitchGridView;
 use App\Admin\Repositories\Files;
 use Illuminate\Http\Request;
 use Zx\Admin\Form;
@@ -41,7 +42,7 @@ class FilesController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new Files(), function (Grid $grid) {
+        /*return Grid::make(new Files(), function (Grid $grid) {
             $grid->column('id')->sortable();
             $grid->column('name');
             $grid->column('product_id');
@@ -54,6 +55,27 @@ class FilesController extends AdminController
                 $filter->equal('id');
 
             });
+        });*/
+        return Grid::make(new Files(), function (Grid $grid) {
+            if (request()->get('_view_') !== 'list') {
+                // 设置自定义视图
+                $grid->view('admin.files.index');
+
+                $grid->setActionClass(Grid\Displayers\Actions::class);
+            }
+            $grid->tools([
+                new SwitchGridView(),
+            ]);
+
+            $grid->column('id', __('ID'));
+
+            $grid->column('name');
+            $grid->column('path')->image('http://hoolai.local/uploads');
+            $grid->column('product_id');
+            $grid->column('task_id');
+            $grid->column('type');
+            $grid->column('created_at');
+            $grid->column('updated_at')->sortable();
         });
     }
 
@@ -69,6 +91,7 @@ class FilesController extends AdminController
         return Show::make($id, new Files(), function (Show $show) {
             $show->field('id');
             $show->field('name');
+            $show->field('path')->image('http://hoolai.local/uploads');
             $show->field('product_id');
             $show->field('task_id');
             $show->field('type');
@@ -86,15 +109,16 @@ class FilesController extends AdminController
     {
         return Form::make(new Files(), function (Form $form) {
             $form->display('id');
+            $form->text('name')->required();
             if ($this->type > 0) {
                 $form->hidden('type')->value($this->type);
-                $form->image('name', '图片')
+                $form->image('path', '图片')
                     ->accept('jpg,png,gif,jpeg')
                     ->move(!empty($this->task_id) ? date('Y-m-d') . '/' . $this->task_id : date('Ymd'))
                     ->autoUpload()->downloadable();
             } else {
                 $form->hidden('type')->value('0');
-                $form->file('name', '附件')
+                $form->file('path', '附件')
                     ->accept('jpg,png,gif,jpeg,zip,gz,doc,docx,pptx,xls,xlsx,txt,psd')
                     ->move(!empty($this->task_id) ? date('Y-m-d') . '/' . $this->task_id : date('Ymd'))
                     ->autoUpload()->downloadable();

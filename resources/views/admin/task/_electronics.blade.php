@@ -7,8 +7,8 @@
             @if ($file['type'] === 1)
         <div class="col-md-3 col-sm-3 col-12 img_list">
             <div class="img-thumbnail">
-                <a href="/uploads/{{$file['name']}}" target="_blank">
-                    <img src="/uploads/{{$file['name']}}" />
+                <a href="/uploads/{{$file['path']}}" target="_blank">
+                    <img src="/uploads/{{$file['path']}}" />
                 </a>
             </div>
         </div>

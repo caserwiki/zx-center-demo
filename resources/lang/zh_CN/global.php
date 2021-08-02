@@ -22,6 +22,7 @@ return [
         'path'                  => '路径',
         'input'                 => '输入',
         'type'                  => '类型',
+        'imported'              => '导入',
     ],
     'labels' => [
         'list'     => '列表',
@@ -30,10 +31,14 @@ return [
         'create'   => '创建',
         'root'     => '顶级',
         'scaffold' => '代码生成器',
+        'File Help' => '导入支持xlsx、csv文件',
     ],
     'options' => [
         'parameter_missing' => '非法参数',
         'record_none' => '记录不存在',
         'record_same' => '已存在相同记录',
+        'file_none' => '文件不存在:',
+        'file_io_error' => '文件读写失败:',
+        'file_format' => '无效的文件类型:',
     ],
 ];

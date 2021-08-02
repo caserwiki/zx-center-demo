@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2021-07-27 11:49:38
+-- 生成日期： 2021-08-02 16:21:50
 -- 服务器版本： 8.0.12
 -- PHP 版本： 7.3.4
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- 数据库： `zx-center`
 --
+CREATE DATABASE IF NOT EXISTS `zx-center` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `zx-center`;
 
 -- --------------------------------------------------------
 
@@ -7830,7 +7832,103 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 (7674, 1, 'admin/task', 'GET', '127.0.0.1', '[]', '2021-07-27 03:45:39', '2021-07-27 03:45:39'),
 (7675, 1, 'admin/zx-api/render', 'GET', '127.0.0.1', '{\"parent_id\":\"18\",\"renderable\":\"App_Admin_Renderable_TaskTable\",\"_trans_\":\"task\",\"key\":\"18\"}', '2021-07-27 03:45:41', '2021-07-27 03:45:41'),
 (7676, 1, 'admin/zx-api/render', 'GET', '127.0.0.1', '{\"parent_id\":\"12\",\"renderable\":\"App_Admin_Renderable_TaskTable\",\"_trans_\":\"task\",\"key\":\"12\"}', '2021-07-27 03:45:43', '2021-07-27 03:45:43'),
-(7677, 1, 'admin/zx-api/render', 'GET', '127.0.0.1', '{\"parent_id\":\"11\",\"renderable\":\"App_Admin_Renderable_TaskTable\",\"_trans_\":\"task\",\"key\":\"11\"}', '2021-07-27 03:45:47', '2021-07-27 03:45:47');
+(7677, 1, 'admin/zx-api/render', 'GET', '127.0.0.1', '{\"parent_id\":\"11\",\"renderable\":\"App_Admin_Renderable_TaskTable\",\"_trans_\":\"task\",\"key\":\"11\"}', '2021-07-27 03:45:47', '2021-07-27 03:45:47'),
+(7678, 1, 'admin/task', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-07-27 03:51:26', '2021-07-27 03:51:26'),
+(7679, 1, 'admin/task/18', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-07-27 03:51:28', '2021-07-27 03:51:28'),
+(7680, 1, 'admin/task', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-07-27 07:04:57', '2021-07-27 07:04:57'),
+(7681, 1, 'admin/task', 'GET', '127.0.0.1', '[]', '2021-08-02 03:49:43', '2021-08-02 03:49:43'),
+(7682, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 03:49:49', '2021-08-02 03:49:49'),
+(7683, 1, 'admin/files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 03:49:53', '2021-08-02 03:49:53'),
+(7684, 1, 'admin/files', 'POST', '127.0.0.1', '{\"_id\":\"c2BHiWswpFQ9tkCW\",\"_token\":\"Y90QapbFpUSnT6AgHIsa5ONjJzXoOeptugOTMTIf\",\"upload_column\":\"name\",\"primary_key\":\"null\",\"id\":\"WU_FILE_0\",\"name\":\"微信图片_20210802112549.jpg\",\"type\":\"image\\/jpeg\",\"lastModifiedDate\":\"Mon Aug 02 2021 11:25:51 GMT+0800 (中国标准时间)\",\"size\":\"32315\"}', '2021-08-02 03:49:58', '2021-08-02 03:49:58'),
+(7685, 1, 'admin/files', 'POST', '127.0.0.1', '{\"type\":\"0\",\"name\":\"20210802\\/微信图片_20210802112549.jpg\",\"_file_\":null,\"product_id\":\"0\",\"task_id\":\"0\",\"_previous_\":\"http:\\/\\/hoolai.local\\/admin\\/files\",\"_token\":\"Y90QapbFpUSnT6AgHIsa5ONjJzXoOeptugOTMTIf\"}', '2021-08-02 03:49:59', '2021-08-02 03:49:59'),
+(7686, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 03:50:00', '2021-08-02 03:50:00'),
+(7687, 1, 'admin/files/2', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 03:50:02', '2021-08-02 03:50:02'),
+(7688, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 03:50:04', '2021-08-02 03:50:04'),
+(7689, 1, 'admin/files/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 03:50:05', '2021-08-02 03:50:05'),
+(7690, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 03:50:09', '2021-08-02 03:50:09'),
+(7691, 1, 'admin/files/2', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 03:56:03', '2021-08-02 03:56:03'),
+(7692, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 03:56:08', '2021-08-02 03:56:08'),
+(7693, 1, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 03:57:03', '2021-08-02 03:57:03'),
+(7694, 0, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2021-08-02 03:57:04', '2021-08-02 03:57:04'),
+(7695, 0, 'admin/auth/login', 'POST', '127.0.0.1', '{\"_token\":\"eFVwJvMSGYIYksdqQQctfKyFTA7iZ8vNtPbQZxx3\",\"username\":\"admin\",\"password\":\"adm******\"}', '2021-08-02 03:57:06', '2021-08-02 03:57:06'),
+(7696, 1, 'admin', 'GET', '127.0.0.1', '[]', '2021-08-02 03:57:07', '2021-08-02 03:57:07'),
+(7697, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 03:57:11', '2021-08-02 03:57:11'),
+(7698, 0, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2021-08-02 07:14:41', '2021-08-02 07:14:41'),
+(7699, 0, 'admin/auth/login', 'POST', '127.0.0.1', '{\"_token\":\"JBPsjeRg1hAzAS8k5DqSjPfNoVXifPkfHUTbRq7u\",\"username\":\"admin\",\"password\":\"adm******\"}', '2021-08-02 07:14:43', '2021-08-02 07:14:43'),
+(7700, 1, 'admin/files', 'GET', '127.0.0.1', '[]', '2021-08-02 07:14:44', '2021-08-02 07:14:44'),
+(7701, 1, 'admin/files', 'GET', '127.0.0.1', '[]', '2021-08-02 07:15:02', '2021-08-02 07:15:02'),
+(7702, 1, 'admin/files', 'GET', '127.0.0.1', '[]', '2021-08-02 07:16:09', '2021-08-02 07:16:09'),
+(7703, 1, 'admin/files', 'GET', '127.0.0.1', '[]', '2021-08-02 07:17:35', '2021-08-02 07:17:35'),
+(7704, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:19:59', '2021-08-02 07:19:59'),
+(7705, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\"}', '2021-08-02 07:21:59', '2021-08-02 07:21:59'),
+(7706, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\"}', '2021-08-02 07:22:11', '2021-08-02 07:22:11'),
+(7707, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:22:12', '2021-08-02 07:22:12'),
+(7708, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:22:13', '2021-08-02 07:22:13'),
+(7709, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"img\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:22:14', '2021-08-02 07:22:14'),
+(7710, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:22:15', '2021-08-02 07:22:15'),
+(7711, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\"}', '2021-08-02 07:22:30', '2021-08-02 07:22:30'),
+(7712, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\"}', '2021-08-02 07:22:35', '2021-08-02 07:22:35'),
+(7713, 1, 'admin/task', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:49:22', '2021-08-02 07:49:22'),
+(7714, 1, 'admin/task/12', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:49:25', '2021-08-02 07:49:25'),
+(7715, 1, 'admin/task', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:49:42', '2021-08-02 07:49:42'),
+(7716, 1, 'admin/task/12', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:49:43', '2021-08-02 07:49:43'),
+(7717, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:50:25', '2021-08-02 07:50:25'),
+(7718, 1, 'admin/files', 'GET', '127.0.0.1', '[]', '2021-08-02 07:51:04', '2021-08-02 07:51:04'),
+(7719, 1, 'admin/files', 'GET', '127.0.0.1', '[]', '2021-08-02 07:51:19', '2021-08-02 07:51:19'),
+(7720, 1, 'admin/files', 'GET', '127.0.0.1', '[]', '2021-08-02 07:51:27', '2021-08-02 07:51:27'),
+(7721, 1, 'admin/files', 'GET', '127.0.0.1', '[]', '2021-08-02 07:51:39', '2021-08-02 07:51:39'),
+(7722, 1, 'admin/files', 'GET', '127.0.0.1', '[]', '2021-08-02 07:52:10', '2021-08-02 07:52:10'),
+(7723, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:52:30', '2021-08-02 07:52:30'),
+(7724, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"img\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:52:32', '2021-08-02 07:52:32'),
+(7725, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:53:11', '2021-08-02 07:53:11'),
+(7726, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\"}', '2021-08-02 07:55:51', '2021-08-02 07:55:51'),
+(7727, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:55:53', '2021-08-02 07:55:53'),
+(7728, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"img\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:55:53', '2021-08-02 07:55:53'),
+(7729, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"img\"}', '2021-08-02 07:56:08', '2021-08-02 07:56:08'),
+(7730, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"img\"}', '2021-08-02 07:56:20', '2021-08-02 07:56:20'),
+(7731, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"img\"}', '2021-08-02 07:56:38', '2021-08-02 07:56:38'),
+(7732, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:57:52', '2021-08-02 07:57:52'),
+(7733, 1, 'admin/task', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:57:55', '2021-08-02 07:57:55'),
+(7734, 1, 'admin/task/12', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 07:57:57', '2021-08-02 07:57:57'),
+(7735, 1, 'admin/task/12', 'GET', '127.0.0.1', '[]', '2021-08-02 07:58:11', '2021-08-02 07:58:11'),
+(7736, 1, 'admin/files/create', 'GET', '127.0.0.1', '{\"product_id\":\"1\",\"task_id\":\"12\",\"type\":\"1\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:03:24', '2021-08-02 08:03:24'),
+(7737, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:03:36', '2021-08-02 08:03:36'),
+(7738, 1, 'admin/files/create', 'GET', '127.0.0.1', '{\"product_id\":\"1\",\"task_id\":\"12\",\"type\":\"1\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:04:08', '2021-08-02 08:04:08'),
+(7739, 1, 'admin/task', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:04:15', '2021-08-02 08:04:15'),
+(7740, 1, 'admin/task/12', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:04:18', '2021-08-02 08:04:18'),
+(7741, 1, 'admin/files/create', 'GET', '127.0.0.1', '{\"product_id\":\"1\",\"task_id\":\"12\",\"type\":\"1\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:06:30', '2021-08-02 08:06:30'),
+(7742, 1, 'admin/files', 'POST', '127.0.0.1', '{\"_id\":\"uwgQe9TvnNY6nOEC\",\"_token\":\"lqFurIO8w9jYsJ6TRXN63MW81ZVQM4cFoGATTsun\",\"upload_column\":\"path\",\"primary_key\":\"null\",\"id\":\"WU_FILE_0\",\"name\":\"laofoye.jpg\",\"type\":\"image\\/jpeg\",\"lastModifiedDate\":\"Tue Jul 27 2021 18:14:44 GMT+0800 (中国标准时间)\",\"size\":\"58916\"}', '2021-08-02 08:06:50', '2021-08-02 08:06:50'),
+(7743, 1, 'admin/files', 'POST', '127.0.0.1', '{\"name\":\"测试1\",\"type\":\"1\",\"path\":\"20210802\\/laofoye.jpg\",\"_file_\":null,\"product_id\":\"1\",\"task_id\":\"12\",\"_token\":\"lqFurIO8w9jYsJ6TRXN63MW81ZVQM4cFoGATTsun\"}', '2021-08-02 08:06:51', '2021-08-02 08:06:51'),
+(7744, 1, 'admin/task/12', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:06:52', '2021-08-02 08:06:52'),
+(7745, 1, 'admin/task/12', 'GET', '127.0.0.1', '[]', '2021-08-02 08:06:57', '2021-08-02 08:06:57'),
+(7746, 1, 'admin/task/12', 'GET', '127.0.0.1', '[]', '2021-08-02 08:07:17', '2021-08-02 08:07:17'),
+(7747, 1, 'admin/files/create', 'GET', '127.0.0.1', '{\"product_id\":\"1\",\"task_id\":\"12\",\"type\":\"1\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:07:39', '2021-08-02 08:07:39'),
+(7748, 1, 'admin/files', 'POST', '127.0.0.1', '{\"_id\":\"jWmTjchWklY9kD7f\",\"_token\":\"lqFurIO8w9jYsJ6TRXN63MW81ZVQM4cFoGATTsun\",\"upload_column\":\"path\",\"primary_key\":\"null\",\"id\":\"WU_FILE_0\",\"name\":\"laofoye.jpg\",\"type\":\"image\\/jpeg\",\"lastModifiedDate\":\"Tue Jul 27 2021 18:14:44 GMT+0800 (中国标准时间)\",\"size\":\"58916\"}', '2021-08-02 08:07:45', '2021-08-02 08:07:45'),
+(7749, 1, 'admin/files', 'POST', '127.0.0.1', '{\"name\":\"测试2\",\"type\":\"1\",\"path\":\"20210802\\/781e1bf080124aa15e11203f25acc614.jpg\",\"_file_\":null,\"product_id\":\"1\",\"task_id\":\"12\",\"_token\":\"lqFurIO8w9jYsJ6TRXN63MW81ZVQM4cFoGATTsun\"}', '2021-08-02 08:07:53', '2021-08-02 08:07:53'),
+(7750, 1, 'admin/task/12', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:07:53', '2021-08-02 08:07:53'),
+(7751, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:09:48', '2021-08-02 08:09:48'),
+(7752, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\",\"_view_\":\"list\"}', '2021-08-02 08:09:53', '2021-08-02 08:09:53'),
+(7753, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:09:59', '2021-08-02 08:09:59'),
+(7754, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:10:02', '2021-08-02 08:10:02'),
+(7755, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\",\"_view_\":\"list\"}', '2021-08-02 08:10:05', '2021-08-02 08:10:05'),
+(7756, 1, 'admin/files/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:10:06', '2021-08-02 08:10:06'),
+(7757, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:10:08', '2021-08-02 08:10:08'),
+(7758, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\",\"_view_\":\"list\"}', '2021-08-02 08:10:10', '2021-08-02 08:10:10'),
+(7759, 1, 'admin/files/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:10:12', '2021-08-02 08:10:12'),
+(7760, 1, 'admin/files/2', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:10:20', '2021-08-02 08:10:20'),
+(7761, 1, 'admin/files/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:10:35', '2021-08-02 08:10:35'),
+(7762, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:10:39', '2021-08-02 08:10:39'),
+(7763, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\",\"_view_\":\"list\"}', '2021-08-02 08:10:41', '2021-08-02 08:10:41'),
+(7764, 1, 'admin/files/2', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:10:43', '2021-08-02 08:10:43'),
+(7765, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:11:05', '2021-08-02 08:11:05'),
+(7766, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"list\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:11:08', '2021-08-02 08:11:08'),
+(7767, 1, 'admin/files', 'GET', '127.0.0.1', '{\"_view_\":\"img\",\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:11:09', '2021-08-02 08:11:09'),
+(7768, 1, 'admin/product', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:12:46', '2021-08-02 08:12:46'),
+(7769, 1, 'admin/task', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:12:47', '2021-08-02 08:12:47'),
+(7770, 1, 'admin/task/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2021-08-02 08:12:58', '2021-08-02 08:12:58'),
+(7771, 1, 'admin/zx-api/render', 'GET', '127.0.0.1', '{\"_row_columns_\":[\"id\",\"name\"],\"_simple_\":\"1\",\"renderable\":\"App_Admin_Renderable_UserTable\",\"_trans_\":\"task\"}', '2021-08-02 08:13:00', '2021-08-02 08:13:00'),
+(7772, 1, 'admin/task/create', 'GET', '127.0.0.1', '[]', '2021-08-02 08:13:08', '2021-08-02 08:13:08'),
+(7773, 1, 'admin/zx-api/render', 'GET', '127.0.0.1', '{\"_row_columns_\":[\"id\",\"name\"],\"_simple_\":\"1\",\"renderable\":\"App_Admin_Renderable_UserTable\",\"_trans_\":\"task\"}', '2021-08-02 08:13:09', '2021-08-02 08:13:09');
 
 -- --------------------------------------------------------
 
@@ -8062,7 +8160,7 @@ CREATE TABLE `admin_users` (
 --
 
 INSERT INTO `admin_users` (`id`, `username`, `password`, `name`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$1rxKv3ktAAhMwZTO5GPBm.cZsdQucK7hEyv2HcP.yf.rpGCfgsDPC', 'Administrator', 'images/logo.png', 'lSu5rSLFkvlBkPK6uikiIA87ndIUo3o8moB6uc5msB6LCRgKYh2RUcWITpM1', '2021-05-27 20:05:36', '2021-06-08 04:03:12'),
+(1, 'admin', '$2y$10$1rxKv3ktAAhMwZTO5GPBm.cZsdQucK7hEyv2HcP.yf.rpGCfgsDPC', 'Administrator', 'images/logo.png', 'AWdPD21sGz9lWxQDmLGCQMCCsNS6TjtQnBNh2OYs3oOsf6mI4huMtFcIfe26', '2021-05-27 20:05:36', '2021-06-08 04:03:12'),
 (2, 'zanxin', '$2y$10$oa0HZMb8ni01C6IMBKRhoexlLJ7ZUC5P73ZgnhR6P3A/sXYLHpV9K', '昝薪', 'images/logo.png', NULL, '2021-05-28 06:31:17', '2021-06-29 10:14:33');
 
 -- --------------------------------------------------------
@@ -8141,14 +8239,15 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `files` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '名称',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '路径',
   `product_id` int(11) DEFAULT '0' COMMENT '产品',
   `task_id` int(11) DEFAULT '0' COMMENT '任务',
   `type` tinyint(4) DEFAULT '1' COMMENT '类型',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
@@ -8437,7 +8536,7 @@ ALTER TABLE `admin_menu`
 -- 使用表AUTO_INCREMENT `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7678;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7774;
 
 --
 -- 使用表AUTO_INCREMENT `admin_permissions`
@@ -8479,7 +8578,7 @@ ALTER TABLE `failed_jobs`
 -- 使用表AUTO_INCREMENT `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用表AUTO_INCREMENT `migrations`

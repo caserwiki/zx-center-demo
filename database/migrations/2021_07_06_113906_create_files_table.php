@@ -15,8 +15,8 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->default('')->comment('名称');
-            $table->string('path')->default('')->comment('路径');
+            $table->string('name')->comment('名称');
+            $table->string('path')->comment('路径');
             $table->integer('product_id')->default('0')->nullable()->comment('项目');
             $table->integer('task_id')->default('0')->nullable()->comment('任务');
             $table->tinyInteger('type')->default('1')->nullable()->comment('类型');

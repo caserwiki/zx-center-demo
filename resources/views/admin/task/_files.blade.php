@@ -7,8 +7,8 @@
             @if ($file['type'] === 0)
         <div class="col-md-2 col-sm-2 col-12 file_list">
             <div>
-                <a href="/uploads/{{$file['name']}}" target="_blank">
-                    <img src="/static/filesicon/{{substr(strrchr($file['name'], '.'), 1)}}.png" />
+                <a href="/uploads/{{$file['path']}}" target="_blank">
+                    <img src="/static/filesicon/{{substr(strrchr($file['path'], '.'), 1)}}.png" />
                     <p>{{basename($file['name'])}}</p>
                 </a>
             </div>

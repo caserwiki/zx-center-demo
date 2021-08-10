@@ -42,21 +42,8 @@ class FilesController extends AdminController
      */
     protected function grid()
     {
-        /*return Grid::make(new Files(), function (Grid $grid) {
-            $grid->column('id')->sortable();
-            $grid->column('name');
-            $grid->column('product_id');
-            $grid->column('task_id');
-            $grid->column('type');
-            $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
-
-            $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
-
-            });
-        });*/
-        return Grid::make(new Files(), function (Grid $grid) {
+        $FilesModel = config('models.files_model');
+        return Grid::make(new Files(), function (Grid $grid) use ($FilesModel) {
             if (request()->get('_view_') !== 'list') {
                 // 设置自定义视图
                 $grid->view('admin.files.index');
@@ -73,9 +60,36 @@ class FilesController extends AdminController
             $grid->column('path')->image('http://hoolai.local/uploads');
             $grid->column('product_id');
             $grid->column('task_id');
-            $grid->column('type');
+            $grid->column('suffix')->display(function () {
+                return substr($this->path, strripos($this->path, '.') +1);
+            });
+            $grid->column('type')->using($FilesModel::$type)->label();
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
+
+            $grid->filter(function (Grid\Filter $filter) use ($FilesModel) {
+                // 展开过滤器
+                $filter->expand();
+                // 更改为 panel 布局
+                $filter->panel();
+
+                $filter->equal('type')->select($FilesModel::$type);
+                $filter->where('suffix', function ($query) use ($FilesModel) {
+                    if (!empty($this->input)) {
+                        $suffix = $FilesModel::$suffix;
+                        foreach ($this->input as $k => $v) {
+                            $val = $suffix[$v];
+                            if ($k == 0) {
+                                $query->where('path', 'like', "%{$val}");
+                            } else {
+                                $query->orWhere('path', 'like', "%{$val}");
+                            }
+                        }
+                    }
+                })->multipleSelect($FilesModel::$suffix);
+                $filter->between('created_at')->datetime();
+            });
+            $grid->quickSearch(['name', 'id']);
         });
     }
 
@@ -107,19 +121,20 @@ class FilesController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new Files(), function (Form $form) {
+        $FilesModel = config('models.files_model');
+        return Form::make(new Files(), function (Form $form) use ($FilesModel) {
             $form->display('id');
             $form->text('name')->required();
             if ($this->type > 0) {
                 $form->hidden('type')->value($this->type);
                 $form->image('path', '图片')
-                    ->accept('jpg,png,gif,jpeg')
+                    ->accept(implode(',', $FilesModel::$typ0))
                     ->move(!empty($this->task_id) ? date('Y-m-d') . '/' . $this->task_id : date('Ymd'))
                     ->autoUpload()->downloadable();
             } else {
                 $form->hidden('type')->value('0');
                 $form->file('path', '附件')
-                    ->accept('jpg,png,gif,jpeg,zip,gz,doc,docx,pptx,xls,xlsx,txt,psd')
+                    ->accept(implode(',', $FilesModel::$suffix))
                     ->move(!empty($this->task_id) ? date('Y-m-d') . '/' . $this->task_id : date('Ymd'))
                     ->autoUpload()->downloadable();
             }

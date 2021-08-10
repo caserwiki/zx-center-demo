@@ -19,8 +19,8 @@
     .form-group .control-label {
         text-align: left;
     }
-    #app {
-        background: url(/vendor/dcat-admin/images/pages/login/bg.jpg) center;
+    .login-page {
+        background: url(/vendor/zx-center/images/bg.jfif) center !important;
         background-size: cover;
     }
 </style>

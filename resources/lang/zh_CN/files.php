@@ -9,6 +9,7 @@ return [
         'product_id' => '项目',
         'task_id' => '任务',
         'type' => '类型',
+        'suffix' => '后缀',
     ],
     'options' => [
         'file_none' => '文件不存在:',

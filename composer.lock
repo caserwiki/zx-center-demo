@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a3b9bc686838b94a278799461be5a20",
+    "content-hash": "b1447b9f41e011f97a2cae776bb19fcb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5166,6 +5166,51 @@
             "time": "2021-06-10T02:22:03+00:00"
         },
         {
+            "name": "zhanxin/o-auth",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caserwiki/OAuth.git",
+                "reference": "aeb5dda1d67c5c883d80340907cfad567a81d0b8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caserwiki/OAuth/zipball/aeb5dda1d67c5c883d80340907cfad567a81d0b8",
+                "reference": "aeb5dda1d67c5c883d80340907cfad567a81d0b8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zx\\OAuth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "zx",
+                    "email": "leowiki@foxmail.com"
+                }
+            ],
+            "description": "zx-center oauth o-auth",
+            "homepage": "https://github.com/caserwiki/OAuth",
+            "keywords": [
+                "oauth o-auth"
+            ],
+            "support": {
+                "issues": "https://github.com/caserwiki/OAuth/issues",
+                "source": "https://github.com/caserwiki/OAuth/tree/main"
+            },
+            "time": "2021-08-19T09:01:39+00:00"
+        },
+        {
             "name": "zhanxin/weather",
             "version": "dev-main",
             "source": {
@@ -7727,6 +7772,7 @@
     "stability-flags": {
         "zhanxin/easy-excel": 20,
         "zhanxin/laravel-admin": 20,
+        "zhanxin/o-auth": 20,
         "zhanxin/weather": 20
     },
     "prefer-stable": true,

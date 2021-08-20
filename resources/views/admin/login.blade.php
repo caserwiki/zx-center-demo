@@ -130,6 +130,14 @@
     body.dark-mode .auth-brand {
         color: #cacbd6
     }
+    .login-oauth {
+        text-align: center;
+    }
+    .login-oauth img{
+        height: 26px;
+        width: 26px;
+        margin: 0 4px;
+    }
 </style>
 
 <div class="row login-main">
@@ -146,11 +154,8 @@
                 </div>
                 <div class="card">
                     <div class="card-body login-card-body">
-
                         <form id="login-form" method="POST" action="{{ admin_url('auth/login') }}">
-
                             <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
-
                             <fieldset class="form-label-group form-group position-relative has-icon-left">
                                 <input
                                     type="text"
@@ -161,24 +166,19 @@
                                     required
                                     autofocus
                                 >
-
                                 <div class="form-control-position">
                                     <i class="feather icon-user"></i>
                                 </div>
-
                                 <label for="email">{{ trans('admin.username') }}</label>
-
                                 <div class="help-block with-errors"></div>
                                 @if($errors->has('username'))
                                     <span class="invalid-feedback text-danger" role="alert">
-                                                    @foreach($errors->get('username') as $message)
-                                            <span class="control-label" for="inputError"><i
-                                                    class="feather icon-x-circle"></i> {{$message}}</span><br>
-                                        @endforeach
-                                                </span>
+                                    @foreach($errors->get('username') as $message)
+                                        <span class="control-label" for="inputError"><i class="feather icon-x-circle"></i> {{$message}}</span><br>
+                                    @endforeach
+                                    </span>
                                 @endif
                             </fieldset>
-
                             <fieldset class="form-label-group form-group position-relative has-icon-left">
                                 <input
                                     minlength="5"
@@ -192,52 +192,66 @@
                                     value="admin"
                                     autocomplete="current-password"
                                 >
-
                                 <div class="form-control-position">
                                     <i class="feather icon-lock"></i>
                                 </div>
                                 <label for="password">{{ trans('admin.password') }}</label>
-
                                 <div class="help-block with-errors"></div>
                                 @if($errors->has('password'))
                                     <span class="invalid-feedback text-danger" role="alert">
-                                                    @foreach($errors->get('password') as $message)
-                                            <span class="control-label" for="inputError"><i
-                                                    class="feather icon-x-circle"></i> {{$message}}</span><br>
-                                        @endforeach
-                                                    </span>
+                                    @foreach($errors->get('password') as $message)
+                                        <span class="control-label" for="inputError"><i class="feather icon-x-circle"></i> {{$message}}</span><br>
+                                    @endforeach
+                                    </span>
                                 @endif
-
                             </fieldset>
                             <div class="form-group d-flex justify-content-between align-items-center">
                                 <div class="text-left">
                                     <fieldset class="checkbox">
                                         <div class="vs-checkbox-con vs-checkbox-primary">
-                                            <input id="remember" name="remember" value="1"
-                                                   type="checkbox" {{ old('remember') ? 'checked' : '' }}>
+                                            <input id="remember" name="remember" value="1" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
                                             <span class="vs-checkbox">
-                                                                <span class="vs-checkbox--check">
-                                                                  <i class="vs-icon feather icon-check"></i>
-                                                                </span>
-                                                            </span>
+                                                <span class="vs-checkbox--check">
+                                                    <i class="vs-icon feather icon-check"></i>
+                                                </span>
+                                            </span>
                                             <span> {{ trans('admin.remember_me') }}</span>
                                         </div>
                                     </fieldset>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary float-right login-btn">
-
                                 {{ __('admin.login') }}
                                 &nbsp;
                                 <i class="feather icon-arrow-right"></i>
                             </button>
                         </form>
-
                     </div>
+                </div>
+                <div class="login-oauth">
+                    ---
+                    <a href="<?= url('oauth/wx');?>" target="_blank">
+                        <img src="/static/oauthicon/wechat.png" />
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="/static/oauthicon/qq.png" />
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="/static/oauthicon/alipay.png" />
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="/static/oauthicon/weibo.png" />
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="/static/oauthicon/github.png" />
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="/static/oauthicon/gitlee.png" />
+                    </a>
+                    ---
                 </div>
             </div>
         </div>
-
     </div>
     <div class="col-lg-9 col-12 login-page-right">
         <div class="content-front"></div>
@@ -251,7 +265,6 @@
         </div>
     </div>
 </div>
-
 
 <script>
     Zx.ready(function () {

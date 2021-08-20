@@ -128,7 +128,7 @@ class FilesController extends AdminController
             if ($this->type > 0) {
                 $form->hidden('type')->value($this->type);
                 $form->image('path', '图片')
-                    ->accept(implode(',', $FilesModel::$typ0))
+                    ->accept(implode(',', $FilesModel::$type0))
                     ->move(!empty($this->task_id) ? date('Y-m-d') . '/' . $this->task_id : date('Ymd'))
                     ->autoUpload()->downloadable();
             } else {
